@@ -3,20 +3,16 @@ import wx.grid
 import pandas as pd
 from datetime import datetime
 
-from display_screen import MyFrame1 as MyFrame1
-import calendar_dec18_piechart
-
-import tkinter as tk
-from tkinter import filedialog
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from display_screen import MyFrame1
+import matplotlib.pyplot as plt  # Add this import statement
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
 from pandas.plotting import register_matplotlib_converters
 
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
 
-df = pd.read_csv(r"C:\Users\Lachlan Dietrich\OneDrive - Griffith University\Uni\2810ICT\py bits v2\listings_dec18.csv",
-                 low_memory=False)  # SET FILE LOCATION HERE
+df = pd.read_csv(r"listings_dec18.csv",
+                 low_memory=False)  # CHANGE THIS TO FILE LOCATION OF listings_dec18.csv
 
 
 #################################
@@ -111,7 +107,7 @@ class CalcFrame(MyFrame1):
         else:
             df_filtered = df[
                 (df_all.apply(lambda row: row.astype(str).str.contains(search_val).any(), axis=1)) & (
-                            df['host_since'] >= search_start) & (
+                        df['host_since'] >= search_start) & (
                         df[
                             'host_since'] <= search_end)]  # lamda checks if any rows (axis=1) fit the search_val; checks using dates as well
 
@@ -127,5 +123,6 @@ class CalcFrame(MyFrame1):
 #################################
 if __name__ == '__main__':
     app = wx.App()
-    CalcFrame()
+    frame = CalcFrame(None)
+    frame.Show()
     app.MainLoop()
