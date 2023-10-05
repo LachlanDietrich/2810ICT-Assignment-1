@@ -4,14 +4,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from pandas.plotting import register_matplotlib_converters
+import wx
 
 # Register matplotlib converters to avoid a warning
 register_matplotlib_converters()
 
 # Create the main window
+
 root = tk.Tk()
 root.geometry("800x600")
 root.title("CSV Data Analyzer")
+
 
 # Function to open a CSV file and display a pie chart
 def open_csv_file():
@@ -46,8 +49,10 @@ def open_csv_file():
         canvas_widget = canvas.get_tk_widget()
         canvas_widget.pack(fill=tk.BOTH, expand=True)
 
+
 # Create an "Open CSV File" button
 open_button = tk.Button(root, text="Open CSV File", command=open_csv_file)
 open_button.pack(pady=10)
 
-root.mainloop()
+if __name__ == '__main__':
+    root.mainloop()

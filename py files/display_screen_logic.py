@@ -3,7 +3,14 @@ import wx.grid
 import pandas as pd
 from datetime import datetime
 
-from display import MyFrame1 as MyFrame1
+from display_screen import MyFrame1 as MyFrame1
+import calendar_dec18_piechart
+
+import tkinter as tk
+from tkinter import filedialog
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from pandas.plotting import register_matplotlib_converters
 
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
@@ -55,8 +62,17 @@ class CalcFrame(MyFrame1):
         self.m_grid2.SetTable(self.table, takeOwnership=True)
         self.m_grid2.AutoSize()
 
-        self.Show(True)
+        self.Show()
         self.Layout()
+
+    def GraphScreen(self, event):
+
+        with open("calendar_dec18_piechart.py", "r") as code_file:
+            code = code_file.read()
+            exec(code)
+
+    def OnDisplayMButton(self, event):
+        pass
 
     # search func
     def OnSearch(self, event):
@@ -110,6 +126,6 @@ class CalcFrame(MyFrame1):
 ##   opens window on startup
 #################################
 if __name__ == '__main__':
-    app = wx.App(False)
-    frame = CalcFrame()
+    app = wx.App()
+    CalcFrame()
     app.MainLoop()

@@ -83,6 +83,8 @@ class MyFrame1(wx.Frame):
         self.Centre(wx.BOTH)
 
         # Connect Events
+        self.Bind(wx.EVT_MENU, self.GraphScreen, self.options_graph)
+        self.Bind(wx.EVT_MENU, self.OnDisplayMButton, self.options_display)
         self.m_button3.Bind(wx.EVT_BUTTON, self.OnSearch)
 
     def __del__(self):
@@ -91,3 +93,10 @@ class MyFrame1(wx.Frame):
     # Virtual event handlers, override them in your derived class
     def OnSearch(self, event):
         event.Skip()
+
+    def GraphScreen(self, event):
+        event.Skip()
+
+    def OnDisplayMButton(self, event):
+        event.Skip()
+
