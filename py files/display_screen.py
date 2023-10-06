@@ -19,11 +19,11 @@ class MyFrame1(wx.Frame):
         self.navbar = wx.MenuBar(0)
         self.nav_options = wx.Menu()
 
-        self.options_graph = wx.MenuItem(self.nav_options, wx.ID_ANY, u"Graph", wx.EmptyString, wx.ITEM_NORMAL)
-        self.nav_options.Append(self.options_graph)
+        self.options_rentals = wx.MenuItem(self.nav_options, wx.ID_ANY, u"Rentals Graph (Selectable file)", wx.EmptyString, wx.ITEM_NORMAL)
+        self.nav_options.Append(self.options_rentals)
 
-        self.options_display = wx.MenuItem(self.nav_options, wx.ID_ANY, u"Display", wx.EmptyString, wx.ITEM_NORMAL)
-        self.nav_options.Append(self.options_display)
+        self.options_clean = wx.MenuItem(self.nav_options, wx.ID_ANY, u"Cleanliness Graph", wx.EmptyString, wx.ITEM_NORMAL)
+        self.nav_options.Append(self.options_clean)
 
         self.navbar.Append(self.nav_options, u"Options")
 
@@ -83,8 +83,8 @@ class MyFrame1(wx.Frame):
         self.Centre(wx.BOTH)
 
         # Connect Events
-        self.Bind(wx.EVT_MENU, self.GraphScreen, self.options_graph)
-        self.Bind(wx.EVT_MENU, self.OnDisplayMButton, self.options_display)
+        self.Bind(wx.EVT_MENU, self.RentalsScreen, self.options_rentals)
+        self.Bind(wx.EVT_MENU, self.CleanScreen, self.options_clean)
         self.m_button3.Bind(wx.EVT_BUTTON, self.OnSearch)
 
     def __del__(self):
@@ -94,9 +94,9 @@ class MyFrame1(wx.Frame):
     def OnSearch(self, event):
         event.Skip()
 
-    def GraphScreen(self, event):
+    def RentalsScreen(self, event):
         event.Skip()
 
-    def OnDisplayMButton(self, event):
+    def CleanScreen(self, event):
         event.Skip()
 

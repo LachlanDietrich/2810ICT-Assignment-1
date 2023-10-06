@@ -8,6 +8,11 @@ import matplotlib.pyplot as plt  # Add this import statement
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
 from pandas.plotting import register_matplotlib_converters
 
+import tkinter as tk
+import plotly.express as px
+from PIL import Image, ImageTk
+import io  # Import io module
+
 EVEN_ROW_COLOUR = '#CCE6FF'
 GRID_LINE_COLOUR = '#ccc'
 
@@ -61,9 +66,15 @@ class CalcFrame(MyFrame1):
         self.Show()
         self.Layout()
 
-    def GraphScreen(self, event):
+    def RentalsScreen(self, event):
 
         with open("calendar_dec18_piechart.py", "r") as code_file:
+            code = code_file.read()
+            exec(code)
+
+    def CleanScreen(self, event):
+
+        with open("cleanliness.py", "r") as code_file:
             code = code_file.read()
             exec(code)
 
